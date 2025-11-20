@@ -170,7 +170,7 @@ npm run dev
 ## 🖼️ Screenshots
 
 ### Landing Page
-![Landing Page](images/landing.png)
+![Landing Page]()
 
 ### Login
 ![Login/Signup](images/login.png)
