@@ -1,0 +1,394 @@
+{
+	"info": {
+		"_postman_id": "ac94e004-1b36-4b8e-bb26-1a6503841284",
+		"name": "Sipsy",
+		"description": "StartFragment\n\n## Shipsy API Documentation – Postman Description\n\n**Welcome to the Shipsy API documentation!**\n\nShipsy is a **Shipment Management System** that allows users to track, create, update, and manage shipments in a secure and organized manner. This Postman collection provides all the endpoints required to interact with the backend API for both authentication and shipment management.\n\n### Base URL\n\n```\nhttps://shipsy-fouh.onrender.com\n\n ```\n\n> \n\nReplace with your deployed backend URL or `http://localhost:5000` for local development.\n\n \n  \n\n---\n\n### Authentication\n\nShipsy uses **JWT-based authentication** for protected routes. After logging in via `/auth/login`, include the token in the `Authorization` header for all protected routes:\n\n```\nAuthorization: Bearer <JWT_TOKEN>\n\n ```\n\n---\n\n### Endpoints\n\n| Endpoint | Method | Description | Auth Required |\n| --- | --- | --- | --- |\n| `/` | GET | Home route – returns a welcome message | ❌ |\n| `/auth/login` | POST | User login – returns JWT token | ❌ |\n| `/auth/signup` | POST | User registration – create a new account | ❌ |\n| `/auth/fetch` | GET | Fetch current user data | ✅ |\n| `/shipment/` | GET | Retrieve all shipments | ✅ |\n| `/shipment/my` | GET | Retrieve shipments belonging to the logged-in user | ✅ |\n| `/shipment/:id` | GET | Get details of a specific shipment by ID | ✅ |\n| `/shipment/` | POST | Create a new shipment | ✅ |\n| `/shipment/:id` | PATCH | Update a shipment by ID | ✅ |\n| `/shipment/:id` | DELETE | Delete a shipment by ID | ✅ |\n\n---\n\n### Features\n\n- **Authentication:** Secure login and JWT-based protected routes.\n    \n- **CRUD Operations:** Create, read, update, and delete shipments.\n    \n- **User-specific Data:** `/shipment/my` returns shipments specific to the logged-in user.\n    \n- **Status Tracking:** Each shipment has statuses like `NEW`, `IN_TRANSIT`, `DELIVERED`, `CANCELLED`.\n    \n- **Easy Testing:** Import this Postman collection to test all API endpoints quickly.\n    \n- **Interactive Docs:** Send requests directly from Postman and see live responses.\n    \n\n---\n\n### Usage Tips\n\n1. **Login First:** Always authenticate using `/auth/login` to receive your JWT token.\n    \n2. **Use Environment Variables:** Store `{{BASE_URL}}` and `{{TOKEN}}` in Postman environments for easy testing.\n    \n3. **Request Examples:** Use the examples in this collection to understand request payloads and expected responses.\n    \n4. **Error Handling:** All endpoints return meaningful HTTP status codes and messages for success and failure.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32517231"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Bhavyank\",\r\n    \"password\":\"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/auth/signup/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"auth",
+								"signup",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Bhavyank\",\r\n    \"password\":\"1234567890\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/auth/login/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetch",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTI3NjAzMiwiZXhwIjoxNzU1MzYyNDMyfQ.WcBkOM_VWEu68mtd73U12AedvC4R0ck7uUD2ij-laZk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/auth/fetch/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"auth",
+								"fetch",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "myShipment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTE2MDUyMCwiZXhwIjoxNzU1MjQ2OTIwfQ.BhxSgGovT28xynnEocyhD6tULPjBNA4OyMjvQfzm10k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/shipment/my/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"shipment",
+								"my",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shipment",
+			"item": [
+				{
+					"name": "createShipment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTE2MDUyMCwiZXhwIjoxNzU1MjQ2OTIwfQ.BhxSgGovT28xynnEocyhD6tULPjBNA4OyMjvQfzm10k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Order from Nagpur to Ranchi\",\r\n    \"status\":\"NEW\",\r\n    \"fragile\":\"true\",\r\n    \"weightKg\":\"12\",\r\n    \"distanceKm\":\"12\",\r\n    \"baseRate\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/shipment/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"shipment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allShipment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTI3NjAzMiwiZXhwIjoxNzU1MzYyNDMyfQ.WcBkOM_VWEu68mtd73U12AedvC4R0ck7uUD2ij-laZk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/shipment/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"shipment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchShipment",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTE2MDUyMCwiZXhwIjoxNzU1MjQ2OTIwfQ.BhxSgGovT28xynnEocyhD6tULPjBNA4OyMjvQfzm10k",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base}}/shipment/689da4db69428ece802a9abb",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"shipment",
+								"689da4db69428ece802a9abb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateShipment",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTE2MDUyMCwiZXhwIjoxNzU1MjQ2OTIwfQ.BhxSgGovT28xynnEocyhD6tULPjBNA4OyMjvQfzm10k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Order from Delhi to Ranchi\",\r\n    \"status\":\"DELIVERED\",\r\n    \"fragile\":\"true\",\r\n    \"weightKg\":\"2\",\r\n    \"distanceKm\":\"12\",\r\n    \"baseRate\":\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}/shipment/689da4db69428ece802a9abb",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"shipment",
+								"689da4db69428ece802a9abb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteShipment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4OWQ4ZjdiYWU4OWFmOTJlNDdmY2E2MSIsImlhdCI6MTc1NTE2MDUyMCwiZXhwIjoxNzU1MjQ2OTIwfQ.BhxSgGovT28xynnEocyhD6tULPjBNA4OyMjvQfzm10k",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Order from Delhi to Ranchi\",\r\n    \"status\":\"DELIVERED\",\r\n    \"fragile\":\"true\",\r\n    \"weightKg\":\"2\",\r\n    \"distanceKm\":\"12\",\r\n    \"baseRate\":\"1\"\r\n}"
+						},
+						"url": {
+							"raw": "{{base}}/shipment/689da4db69428ece802a9abb",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"shipment",
+								"689da4db69428ece802a9abb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Home",
+			"item": [
+				{
+					"name": "Home",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "jwt",
+		"jwt": [
+			{
+				"key": "algorithm",
+				"value": "HS256",
+				"type": "string"
+			},
+			{
+				"key": "isSecretBase64Encoded",
+				"value": false,
+				"type": "boolean"
+			},
+			{
+				"key": "payload",
+				"value": "{}",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			},
+			{
+				"key": "headerPrefix",
+				"value": "Bearer",
+				"type": "string"
+			},
+			{
+				"key": "queryParamKey",
+				"value": "token",
+				"type": "string"
+			},
+			{
+				"key": "header",
+				"value": "{}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:3000"
+		}
+	]
+}
